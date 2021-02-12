@@ -1,2 +1,2 @@
-# The-Board-of-Trivia
+# Penstrevia
 Sharing of project
