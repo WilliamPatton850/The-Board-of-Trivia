@@ -1,0 +1,19 @@
+public class Score {
+	private int Money;
+	
+	public Score(int Money) {
+		this.Money = Money;
+	}
+	
+	public void minusScore(int Money) {
+		this.Money -= Money;
+	}
+	
+	public void addScore(int Money) {
+		this.Money += Money;
+	}
+	
+	public int returnScore() {
+		return Money;
+	}
+}
