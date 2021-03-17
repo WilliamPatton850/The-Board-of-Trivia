@@ -1,0 +1,9 @@
+import java.util.*;
+
+public class PlayerClassStorage {
+	ArrayList<Score> storage;
+	
+	PlayerClassStorage(){
+		storage = new ArrayList<Score>();
+	}
+}
