@@ -1,9 +1,15 @@
 import java.util.*;
 
 public class PlayerClassStorage {
-	ArrayList<Score> storage;
+	private ArrayList<Player> storage;
 	
 	PlayerClassStorage(){
-		storage = new ArrayList<Score>();
+		storage = new ArrayList();
 	}
+	
+	public void createFullPlayer(String first, String last, String email, String password) {
+		Player newPlayer = new Player(first, last, email, password);
+		storage.add(newPlayer);
+	}
+	
 }
