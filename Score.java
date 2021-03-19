@@ -1,6 +1,7 @@
 //calculates and stores game scores
 //calculates and stores player rankings 
-//methods for easy, medium and hard questions (each worth different points) 
+//methods for easy, medium and hard questions (each worth different points)
+import java.util.*;
 
 public class Score {
 	
