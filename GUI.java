@@ -1,18 +1,20 @@
-//package triviaGame;
-
+// The main menu of the game display by GUI
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Font;
 import java.awt.event.*;
+
 class GUI{
 		int numOfPlayer;
 		char startRankingLogin;
 		char startOrRanking;
 		GUI(){
 		}
+	
 		void start() {
 			menu();
 		}
+		
 		void menu(){
 			
 			JFrame menuFrame = new JFrame("Menu");
@@ -56,6 +58,7 @@ class GUI{
 			
 			
 		}
+		
 		int selectNumPlayer() {
 			
 			JFrame numPlayerFrame = new JFrame("Number of Player");
