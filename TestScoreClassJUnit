@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 class TestScoreClass {
 
 	@Test
-	//default constructor score
+	//default constructor score test
 	void test1() {
 		Score score1 = new Score();
 		assertEquals(0, score1.getScore());
@@ -13,7 +13,7 @@ class TestScoreClass {
 	}
 	
 	@Test
-	//Testing question mechanic
+	//question mechanic test
 	void test2() {
 		Score score1 = new Score();
 		//player answers easy question correctly (+5 points)
@@ -29,8 +29,8 @@ class TestScoreClass {
 		assertEquals(30, score1.getScore());
 	}
 	
-	@Test
-	//Test Rankings
+	@Test 
+	//Test Rankings test
 	void test3() {
 		fail("Not yet implemented");
 	}
