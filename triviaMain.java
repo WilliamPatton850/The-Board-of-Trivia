@@ -1,5 +1,4 @@
-package triviaGame;
-
+//Display GUI
 
 class triviaMain {
 	 public static void main(String args[]) {
