@@ -27,7 +27,7 @@ class TestPlayerClass {
 	}
 	
 	@Test
-	//copy constructor
+	//copy constructor test
 	void test3() {
 		Player test1 = new Player("John","Deer","Bobbie@gmail.com", "abc123");
 		Player test2 = new Player(test1);
