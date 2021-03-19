@@ -1,3 +1,5 @@
+//roll 2 dice when call
+
 public class Dice {
 	public static int roll() {
 		int dice1;
