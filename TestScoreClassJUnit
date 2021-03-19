@@ -1,0 +1,38 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class TestScoreClass {
+
+	@Test
+	//default constructor score
+	void test1() {
+		Score score1 = new Score();
+		assertEquals(0, score1.getScore());
+		assertEquals(0, score1.getRanking());
+	}
+	
+	@Test
+	//Testing question mechanic
+	void test2() {
+		Score score1 = new Score();
+		//player answers easy question correctly (+5 points)
+		score1.easyQuestion();
+		assertEquals(5,  score1.getScore());
+		
+		//player answers medium question correctly (+10 points)
+		score1.mediumQuestion();
+		assertEquals(15, score1.getScore());
+		
+		//player answers hard question correctly (+15 points)
+		score1.hardQuestion();
+		assertEquals(30, score1.getScore());
+	}
+	
+	@Test
+	//Test Rankings
+	void test3() {
+		fail("Not yet implemented");
+	}
+
+}
