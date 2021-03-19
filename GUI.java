@@ -1,4 +1,4 @@
-package triviaGame;
+//package triviaGame;
 
 import javax.swing.*;
 import java.awt.*;

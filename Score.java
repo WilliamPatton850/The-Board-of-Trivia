@@ -4,15 +4,13 @@
 
 public class Score {
 	
-  private int playerID;
   private int playerScore;
   private int playerRanking;
   
-//constructor 
-public Score(int playerID) {
-  this.playerID = playerID;
-  this.playerScore = 0;
-  this.playerRanking = 0;
+//default constructor
+public Score() {
+  playerScore = 0;
+  playerRanking = 0;
 }
 	
 //easy questions (each question worth 5 points) 
