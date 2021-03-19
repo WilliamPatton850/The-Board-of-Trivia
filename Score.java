@@ -1,49 +1,47 @@
 //calculates and stores game scores
 //calculates and stores player rankings 
 //methods for easy, medium and hard questions (each worth different points)
-import java.util.*;
 
 public class Score {
-	
-  private int playerScore;
-  private int playerRanking;
+   private int playerScore;
+   private int playerRanking;
   
-//default constructor
-public Score() {
-  playerScore = 0;
-  playerRanking = 0;
-}
+   //default constructor
+   public Score() {
+		playerScore = 0;
+   		playerRanking = 0;
+	}
 	
-//easy questions (each question worth 5 points) 
-public void easyQuestion() {
-  playerScore = playerScore + 5;
-}
+	//easy questions (each question worth 5 points) 
+	public void easyQuestion() {
+		playerScore += 5;
+	}
   
-//medium questions (each question worth 10 points)
-public void mediumQuestion() {
-	playerScore = playerScore + 10;
-}
+	//medium questions (each question worth 10 points)
+	public void mediumQuestion() {
+		playerScore += 10;
+	}
 	
-//hard questions (each question worth 15 points)
-public void hardQuestion() {
-	playerScore = playerScore + 15;
-}
+	//hard questions (each question worth 15 points)
+	public void hardQuestion() {
+		playerScore += 15;
+	}
 
-//returns player score 
-public int getScore() {
-  return playerScore; 
-}
+	//returns player score 
+	public int getScore() {
+		return playerScore; 
+	}
 
-//returns player ranking 
-public int getRanking() {
- return playerRanking;	
-}
+	//returns player ranking 
+	public int getRanking() {
+		return playerRanking;	
+	}
 
-//calculate player ranking
-public int calculateRanking() {
-  //calculate ranking
-  return playerRanking; 
-}
+	//calculate player ranking
+	public int calculateRanking() {
+		playerRanking = playerScore * 2;
+		return playerRanking; 
+	}
 
 	
 }
