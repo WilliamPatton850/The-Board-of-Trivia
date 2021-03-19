@@ -2,21 +2,6 @@
 public class TestScoreClass {
 	public static void main(String[] args) {
 		
-		String first = "John";
-		String last = "Deer";
-		String email = "jd123@gmail.com";
-		String password = "abc123";
-		
-		//create player
-		Player player = new Player(first, last, email, password);
-	    System.out.println("Player Info: ");
-		System.out.println("User Name: " + player.GetPlayerName());
-		System.out.println("First Name: " + player.GetFirstName());
-		System.out.println("Last Name: " + player.GetLastName());
-		System.out.println("Email: " + player.GetEmail());
-		System.out.println("Password: " + player.GetPassword());
-		System.out.println();
-		
 		//create default score 
 		Score score1 = new Score();
 		System.out.println("Score: " + score1.getScore());
