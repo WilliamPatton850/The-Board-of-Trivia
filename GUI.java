@@ -1,11 +1,9 @@
-// The main menu of the game display by GUI
-//package triviaGame;
+package triviaGame;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Font;
 import java.awt.event.*;
-
 class GUI{
 		int numOfPlayer;
 		char startRankingLogin;
