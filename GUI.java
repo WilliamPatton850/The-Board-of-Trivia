@@ -1,5 +1,5 @@
 // The main menu of the game display by GUI
-package triviaGame;
+//package triviaGame;
 
 import javax.swing.*;
 import java.awt.*;
