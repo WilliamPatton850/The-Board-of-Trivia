@@ -1,5 +1,3 @@
-package triviaGame;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Font;
@@ -18,6 +16,7 @@ class GUI{
 			JFrame menuFrame = new JFrame("Menu");
 			JLabel gameLabel = new JLabel("Pensatrivia");
 			JButton startButton = new JButton("Start");
+			JButton registration = new JButton("Register");
 			JButton rankButton = new JButton("Ranking");
 			Font f = new Font("TimesRoman",Font.BOLD,30);
 			JPanel menuPanel = new JPanel();
@@ -32,6 +31,18 @@ class GUI{
 				}
 			});
 			
+			registration.setFont(f);
+			registration.setBounds(310,400, 150, 50);
+			registration.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					menuFrame.setVisible(false);
+					loginPage();
+					
+				}
+			});
+			
 			rankButton.setFont(f);
 			rankButton.setBounds(310,300,150,50);
 			
@@ -43,6 +54,7 @@ class GUI{
 			menuPanel.add(gameLabel);
 			menuPanel.add(startButton);
 			menuPanel.add(rankButton);
+			menuPanel.add(registration);
 			menuPanel.setLayout(null);	
 			
 			menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,6 +64,73 @@ class GUI{
 			
 			
 		}
+		
+		void loginPage() {
+			JPanel registration = new JPanel();
+			JFrame Register = new JFrame("Register");
+			
+			JLabel first = new JLabel("First Name: ");
+			JLabel last = new JLabel("Last Name: ");
+			JLabel email = new JLabel("Email: ");
+			JLabel password = new JLabel("Password: ");
+			
+			JTextField firstT = new JTextField();
+			JTextField lastT = new JTextField();
+			JTextField emailT = new JTextField();
+			JTextField passwordT = new JTextField();
+			
+			JButton RegisterButton = new JButton("Register");
+			RegisterButton.setFont(new Font("TimesRoman",Font.BOLD,25));
+			Dimension size0 = RegisterButton.getPreferredSize();
+			RegisterButton.setBounds(320,400,size0.width,size0.height);
+			
+			
+			first.setFont(new Font("TimesRoman",Font.BOLD,30));
+			Dimension size = first.getPreferredSize();
+			first.setBounds(150,100,size.width,size.height);
+			
+			
+			last.setFont(new Font("TimesRoman",Font.BOLD,30));
+			Dimension size1 = last.getPreferredSize();
+			last.setBounds(150,160,size1.width,size1.height);
+			
+			
+			email.setFont(new Font("TimesRoman",Font.BOLD,30));
+			Dimension size2 = email.getPreferredSize();
+			email.setBounds(150,220,size2.width,size2.height);
+			
+			
+			password.setFont(new Font("TimesRoman",Font.BOLD,30));
+			Dimension size3 = password.getPreferredSize();
+			password.setBounds(150,280,size3.width,size3.height);
+			
+			
+			firstT.setBounds(320,100,180,40);
+			
+			lastT.setBounds(320,160,180,40);
+			
+			emailT.setBounds(320,220,180,40);
+			
+			passwordT.setBounds(320,280,180,40);
+			
+			registration.add(first);
+			registration.add(last);
+			registration.add(email);
+			registration.add(password);
+			registration.add(firstT);
+			registration.add(lastT);
+			registration.add(emailT);
+			registration.add(passwordT);
+			registration.add(RegisterButton);
+			registration.setLayout(null);
+			
+			Register.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			Register.add(registration);
+			Register.setSize(800,600);
+			Register.setVisible(true);
+			
+		}
+		
 		void selectNumPlayer() {	
 			
 			int numReturn;
@@ -106,6 +185,7 @@ class GUI{
 				}
 			});
 		}
+		
 		void loginSelect(int numPlayer) {
 			
 			JFrame loginFrame = new JFrame("Login");
