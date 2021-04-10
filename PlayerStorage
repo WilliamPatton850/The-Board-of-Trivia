@@ -1,0 +1,22 @@
+import java.util.ArrayList;
+
+// store player class into an arrayList;
+
+public class PlayerStorage {
+	private ArrayList<Player> array;
+	
+	public PlayerStorage() {
+		array = new ArrayList<Player>();
+	}
+	
+	public PlayerStorage(PlayerStorage Player) {
+		array = Player.array;
+	}
+	
+	// put the player into array
+	public void input(Player stuff) {
+		array.add(stuff);
+	}
+
+}
+
