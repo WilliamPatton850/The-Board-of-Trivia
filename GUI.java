@@ -8,6 +8,7 @@ class GUI{
 		char startOrRanking;
 		PlayerStorage newPlayer = new PlayerStorage();
 		Player playerTest = new Player();
+		Game g = new Game();
 		
 		GUI(){
 		}
@@ -294,7 +295,7 @@ class GUI{
 				public void actionPerformed(ActionEvent arg0) {
 					if(newPlayer.IsPlayerLogin(userNameText.getText(), passwordText.getText())) {
 						loginFrame.setVisible(false);
-						//add game board here
+						g.startGame();
 					}
 					
 				}
