@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 // store player class into an arrayList;
-
 public class PlayerStorage {
 	private ArrayList<Player> array;
+	private String userName;
 	
 	public PlayerStorage() {
 		array = new ArrayList<Player>();
@@ -13,10 +13,39 @@ public class PlayerStorage {
 		array = Player.array;
 	}
 	
-	// put the player into array
+	//Put the player into array
 	public void input(Player stuff) {
 		array.add(stuff);
 	}
-
+	
+	public boolean IsPlayer(String userName) {
+		for(int i = 0; i < array.size() - 1; i++) {
+			if(array.get(i).GetPlayerName() == userName) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean IsPlayerLogin(String userName, String password) {
+		for(int i = 0; i < array.size() - 1; i++) {
+			if(array.get(i).GetPlayerName() == userName) {
+				if(array.get(i).GetPassword() == password) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public Player GetPlayer() {
+		if(IsPlayer(userName)) {
+			for(int i = 0; i < array.size() - 1; i++) {
+				if(array.get(i).GetPlayerName() == userName) {
+					return array.get(i);
+				}
+		}
+	}
+	return null;
+	}
 }
-
