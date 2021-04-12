@@ -1,15 +1,11 @@
-//Player class containing password, first name, last name, email, and userName
 import java.util.*;
-
 public class Player {
-
 	private String password;
 	private String first;
 	private String last;
 	private String email;
 	private String userName;
 	
-	//default constructor
 	public Player() {
 		password = "";
 		first = "";
@@ -18,7 +14,6 @@ public class Player {
 		userName = "";
 	}
 	
-	//overloaded constructor
 	public Player(String first, String last, String email, String password){
 		SetPassword(password);
 		SetEmail(email);
@@ -27,7 +22,14 @@ public class Player {
 		SetPlayerName();
 	}
 	
-	//copy constructor
+	public void setAll(String first, String last, String email, String password) {
+		SetPassword(password);
+		SetEmail(email);
+		SetFirstName(first);
+		SetLastName(last);
+		SetPlayerName();
+	}
+	
 	public Player(Player player) {
 		this.email = player.email;
 		this.password = player.password;
@@ -36,7 +38,6 @@ public class Player {
 		this.userName = player.userName;
 	}
 	
-	//set playerName as random from alphabet and numbers
 	public void SetPlayerName() {
 		userName = "";
 		Random name = new Random();
@@ -46,7 +47,7 @@ public class Player {
 		}
 	}
 	
-	//setters
+	
 	public void SetPassword(String password) {
 		this.password = password;
 	}
@@ -63,7 +64,6 @@ public class Player {
 		this.last = last;
 	}
 	
-	//getters
 	public String GetPlayerName() {
 		return userName;
 	}
@@ -83,5 +83,6 @@ public class Player {
 	public String GetLastName() {
 		return last;
 	}
+	
 	
 }
