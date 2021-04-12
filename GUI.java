@@ -6,11 +6,18 @@ class GUI{
 		int numOfPlayer;
 		char startRankingLogin;
 		char startOrRanking;
+		PlayerStorage newPlayer = new PlayerStorage();
+		Player playerTest = new Player();
+		
 		GUI(){
 		}
+		
+		// function to start 
 		void start() {
 			menu();
 		}
+		
+		//The main page of the GUI
 		void menu(){
 			
 			JFrame menuFrame = new JFrame("Menu");
@@ -65,6 +72,7 @@ class GUI{
 			
 		}
 		
+		//The Registration Page
 		void loginPage() {
 			JPanel registration = new JPanel();
 			JFrame Register = new JFrame("Register");
@@ -83,6 +91,22 @@ class GUI{
 			RegisterButton.setFont(new Font("TimesRoman",Font.BOLD,25));
 			Dimension size0 = RegisterButton.getPreferredSize();
 			RegisterButton.setBounds(320,400,size0.width,size0.height);
+			
+			//RegisterButton that redirect to Start Button if pass
+			RegisterButton.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					if(firstT.getText().length() > 1 && lastT.getText().length() > 1 && emailT.getText().length() > 1 && passwordT.getText().length() > 1 ) {
+						Register.setVisible(false);
+						playerTest.setAll(firstT.getText(), lastT.getText(), emailT.getText(), passwordT.getText());
+						newPlayer.input(playerTest);
+						showUserName();
+					}
+	
+					
+				}
+			});
 			
 			
 			first.setFont(new Font("TimesRoman",Font.BOLD,30));
@@ -131,6 +155,46 @@ class GUI{
 			
 		}
 		
+		//Show the userName so user can copy to login into game
+		void showUserName() {
+			JPanel Continue = new JPanel();
+			JFrame ContinuePage = new JFrame("Register");
+			
+			JLabel UserName = new JLabel("Your UserName: " + playerTest.GetPlayerName());
+			
+			JButton ContinueButton = new JButton("Continue");
+			ContinueButton.setFont(new Font("TimesRoman",Font.BOLD,25));
+			Dimension size0 = ContinueButton.getPreferredSize();
+			ContinueButton.setBounds(320,400,size0.width,size0.height);
+			
+			//Select the Number of player
+			ContinueButton.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					ContinuePage.setVisible(false);
+					selectNumPlayer();
+				}
+			});
+			
+			UserName.setFont(new Font("TimesRoman",Font.BOLD,30));
+			Dimension size = UserName.getPreferredSize();
+			UserName.setBounds(220,100,size.width,size.height);
+			
+			Continue.add(UserName);
+			Continue.add(ContinueButton);
+			Continue.setLayout(null);
+			
+			ContinuePage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			ContinuePage.add(Continue);
+			ContinuePage.setSize(800,600);
+			ContinuePage.setVisible(true);
+			
+			
+			
+		}
+		
+		//3 4 5 players to login
 		void selectNumPlayer() {	
 			
 			int numReturn;
@@ -169,23 +233,27 @@ class GUI{
 			num3Button.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					numPlayerFrame.setVisible(false);
 					loginSelect(3);
 				}
 			});
 			num4Button.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					numPlayerFrame.setVisible(false);
 					loginSelect(4);								
 				}
 			});
 			num5Button.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					numPlayerFrame.setVisible(false);
 					loginSelect(5);								
 				}
 			});
 		}
 		
+		//login screen
 		void loginSelect(int numPlayer) {
 			
 			JFrame loginFrame = new JFrame("Login");
@@ -218,6 +286,19 @@ class GUI{
 			userNameText.setBounds(320,160,180,40);
 			
 			passwordText.setBounds(320,220,180,40);
+			
+			//Check if login available link to board
+			loginButton.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					if(newPlayer.IsPlayerLogin(userNameText.getText(), passwordText.getText())) {
+						loginFrame.setVisible(false);
+						//add game board here
+					}
+					
+				}
+			});
 			
 			loginPanel.add(loginLabel);
 			loginPanel.add(userNameLabel);
