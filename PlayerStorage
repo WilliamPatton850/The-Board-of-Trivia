@@ -3,6 +3,7 @@ import java.util.ArrayList;
 // store player class into an arrayList;
 public class PlayerStorage {
 	private ArrayList<Player> array;
+	
 	private String userName;
 	
 	public PlayerStorage() {
@@ -18,15 +19,6 @@ public class PlayerStorage {
 		array.add(stuff);
 	}
 	
-	public boolean IsPlayer(String userName) {
-		for(int i = 0; i < array.size(); i++) {
-			if(array.get(i).GetPlayerName().equals(userName)) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
 	public boolean IsPlayerLogin(String userName, String password) {
 		for(int i = 0; i < array.size(); i++) {
 			if(array.get(i).GetPlayerName().equals(userName)  && array.get(i).GetPassword().equals(password)) {
@@ -37,5 +29,6 @@ public class PlayerStorage {
 		return false;
 	
 	}
+	
 	
 }
