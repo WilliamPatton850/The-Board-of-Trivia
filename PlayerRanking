@@ -1,0 +1,119 @@
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class PlayerRanking {
+	private String[] Ranking;
+	
+	PlayerRanking(){
+		Ranking = new String[10];
+	}
+	
+	public void start() {
+		theLeaderBoard();
+	}
+	
+	public void theLeaderBoard() {
+		JPanel LeaderBoardPanel = new JPanel();
+		JFrame LeaderBoardFrame = new JFrame("LeaderBoard");
+		
+		JLabel leadBoard = new JLabel("LeaderBoard");
+		JLabel first = new JLabel("1. " + Ranking[0]);
+		JLabel second = new JLabel("2. " + Ranking[1]);
+		JLabel third = new JLabel("3. "+ Ranking[2]);
+		JLabel fourth = new JLabel("4. "+ Ranking[3]);
+		JLabel fifth = new JLabel("5. "+ Ranking[4]);
+		JLabel six = new JLabel("6. " + Ranking[5]);
+		JLabel seven = new JLabel("7. " + Ranking[6]);
+		JLabel eight = new JLabel("8. " + Ranking[7]);
+		JLabel nine = new JLabel("9. " + Ranking[8]);
+		JLabel ten = new JLabel("10. "+ Ranking[9]);
+		
+		leadBoard.setFont(new Font("TimesRoman",Font.BOLD,30));
+		Dimension sizeL = leadBoard.getPreferredSize();
+		leadBoard.setBounds(300,10,sizeL.width,sizeL.height);
+		
+		first.setFont(new Font("TimesRoman",Font.BOLD,30));
+		Dimension size1 = first.getPreferredSize();
+		first.setBounds(150,40,size1.width,size1.height);
+		
+		second.setFont(new Font("TimesRoman",Font.BOLD,30));
+		Dimension size2 = second.getPreferredSize();
+		second.setBounds(150,70,size2.width,size2.height);
+		
+		third.setFont(new Font("TimesRoman",Font.BOLD,30));
+		Dimension size3 = third.getPreferredSize();
+		third.setBounds(150,100,size3.width,size3.height);
+		
+		fourth.setFont(new Font("TimesRoman",Font.BOLD,30));
+		Dimension size4 = fourth.getPreferredSize();
+		fourth.setBounds(150,130,size4.width,size4.height);
+		
+		fifth.setFont(new Font("TimesRoman",Font.BOLD,30));
+		Dimension size5 = fifth.getPreferredSize();
+		fifth.setBounds(150,160,size5.width,size5.height);
+		
+		six.setFont(new Font("TimesRoman",Font.BOLD,30));
+		Dimension size6 = six.getPreferredSize();
+		six.setBounds(150,190,size6.width,size6.height);
+		
+		seven.setFont(new Font("TimesRoman",Font.BOLD,30));
+		Dimension size7 = seven.getPreferredSize();
+		seven.setBounds(150,220,size7.width,size7.height);
+
+		eight.setFont(new Font("TimesRoman",Font.BOLD,30));
+		Dimension size8 = eight.getPreferredSize();
+		eight.setBounds(150,250,size8.width,size8.height);
+		
+		
+		nine.setFont(new Font("TimesRoman",Font.BOLD,30));
+		Dimension size9 = nine.getPreferredSize();
+		nine.setBounds(150,280,size9.width,size9.height);
+		
+		ten.setFont(new Font("TimesRoman",Font.BOLD,30));
+		Dimension size10 = ten.getPreferredSize();
+		ten.setBounds(135,310,size10.width,size10.height);
+		
+		JButton returnButton = new JButton("Return");
+		
+		returnButton.setFont(new Font("TimesRoman",Font.BOLD,30));
+		returnButton.setBounds(300,350,150,50);
+		returnButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				LeaderBoardFrame.setVisible(false);
+				GUI game = new GUI();
+				game.start();
+			}
+		});
+		
+		
+		LeaderBoardPanel.add(leadBoard);
+		LeaderBoardPanel.add(first);
+		LeaderBoardPanel.add(second);
+		LeaderBoardPanel.add(third);
+		LeaderBoardPanel.add(fourth);
+		LeaderBoardPanel.add(fifth);
+		LeaderBoardPanel.add(six);
+		LeaderBoardPanel.add(seven);
+		LeaderBoardPanel.add(eight);
+		LeaderBoardPanel.add(nine);
+		LeaderBoardPanel.add(ten);
+		LeaderBoardPanel.add(returnButton);
+		LeaderBoardPanel.setLayout(null);
+		
+		LeaderBoardFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		LeaderBoardFrame.add(LeaderBoardPanel);
+		LeaderBoardFrame.setSize(800,600);
+		LeaderBoardFrame.setVisible(true);
+		
+		
+	}
+}
