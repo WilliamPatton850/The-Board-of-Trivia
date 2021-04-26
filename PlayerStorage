@@ -28,8 +28,8 @@ public class PlayerStorage {
 	}
 	
 	public boolean IsPlayerLogin(String userName, String password) {
-		for(int i = 0; i < array.size() - 1; i++) {
-			if(array.get(i).GetPlayerName().euals(userName) {
+		for(int i = 0; i < array.size(); i++) {
+			if(array.get(i).GetPlayerName().equals(userName) {
 				if(array.get(i).GetPassword().equals(password) {
 					return true;
 				}
@@ -41,7 +41,7 @@ public class PlayerStorage {
 	public Player GetPlayer() {
 		if(IsPlayer(userName)) {
 			for(int i = 0; i < array.size() - 1; i++) {
-				if(array.get(i).GetPlayerName() == userName) {
+				if(array.get(i).GetPlayerName().equals(userName)) {
 					return array.get(i);
 				}
 		}
