@@ -1,117 +1,251 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class QuestionList {
-	private int easySize = 0;
-	private int medSize = 0;
-	private int hardSize = 0;
-	private String[] easyQuestions;
-	private String[] medQuestions;
-	private String[] hardQuestions;
+	int easyPoints = 5;
+	int numEasy = 0;
+	int currEasyQ = 0;
+	int medPoints = 10;
+	int numMed = 0;
+	int currMedQ = 0;
+	int hardPoints = 15;
+	int numHard = 0;
+	int currHardQ = 0;
+	private ArrayList<Question> easyQuestions = new ArrayList<>();
+	private ArrayList<Question> medQuestions = new ArrayList<>();
+	private ArrayList<Question> hardQuestions = new ArrayList<>();
 	
 	public void importEasy() {
 		try {
-			int i = 0;
-			File easyQ = new File("easyQuestions.dat");
-			Scanner easyReader = new Scanner(easyQ);
-			easyReader.useDelimiter("\r");
+			FileReader easyQ = new FileReader("easyQuestions.dat");
+			BufferedReader easyReader = new BufferedReader(easyQ);
+			Scanner easyScan = new Scanner(easyReader);
 			
-			while (easyReader.hasNextLine()) {
-				if (easyReader.hasNextInt()) {
-					easySize = easyReader.nextInt();
-					easyQuestions = new String[easySize];
-				}
-				else {
-					if (i < easySize) {
-						easyQuestions[i] = easyReader.nextLine();
-						i++;
+			String currLine;
+			String question = "";
+			String a1 = "";
+			String a2 = "";
+			String a3 = "";
+			String a4 = "";
+			int correct = 0;
+			
+			while (easyScan.hasNext()) {				
+				while (correct == 0) {
+					currLine = easyScan.nextLine();
+					
+					if (currLine.contains("?")) {
+						question = currLine;
 					}
-					else {
-						System.out.println("More questions than max number listed detected.  Ignoring inputs after question #" + easySize + ".");
+					else if (currLine.contains(")")) {
+						if (Integer.valueOf(currLine.indexOf(0)) == 1) {
+							a1 = currLine;
+						}
+						else if (Integer.valueOf(currLine.indexOf(0)) == 2) {
+							a2 = currLine;
+						}
+						else if (Integer.valueOf(currLine.indexOf(0)) == 3) {
+							a3 = currLine;
+						}
+						else if (Integer.valueOf(currLine.indexOf(0)) == 4) {
+							a4 = currLine;
+						}
+					}
+					else if (Character.isDigit(currLine.indexOf(0))) {
+						correct = Integer.valueOf(currLine);
 					}
 				}
+				
+				easyQuestions.add(new Question(question, a1, a2, a3, a4, correct));
+				numEasy++;
 			}
 			
-			easyReader.close();
+			easyScan.close();
 		}
 		
-		catch (FileNotFoundException nofile) {
-			System.out.println("Please insert a question file named 'easyQuestions.dat' into the folder, then try again.");
+		catch (IOException error) {
+			error.printStackTrace();
 		}
 	}
 	
 	public void importMed() {
 		try {
-			int i = 0;
-			File medQ = new File("medQuestions.dat");
-			Scanner medReader = new Scanner(medQ);
-			medReader.useDelimiter("\r");
+			FileReader medQ = new FileReader("medQuestions.dat");
+			BufferedReader medReader = new BufferedReader(medQ);
+			Scanner medScan = new Scanner(medReader);
 			
-			while (medReader.hasNextLine()) {
-				if (medReader.hasNextInt()) {
-					medSize = medReader.nextInt();
-					medQuestions = new String[medSize];
-				}
-				else {
-					if (i < medSize) {
-						medQuestions[i] = medReader.nextLine();
-						i++;
+			String currLine;
+			String question = "";
+			String a1 = "";
+			String a2 = "";
+			String a3 = "";
+			String a4 = "";
+			int correct = 0;
+			
+			while (medScan.hasNext()) {				
+				while (correct == 0) {
+					currLine = medScan.nextLine();
+					
+					if (currLine.contains("?")) {
+						question = currLine;
 					}
-					else {
-						System.out.println("More questions than max number listed detected.  Ignoring inputs after question #" + medSize + ".");
+					else if (currLine.contains(")")) {
+						if (Integer.valueOf(currLine.indexOf(0)) == 1) {
+							a1 = currLine;
+						}
+						else if (Integer.valueOf(currLine.indexOf(0)) == 2) {
+							a2 = currLine;
+						}
+						else if (Integer.valueOf(currLine.indexOf(0)) == 3) {
+							a3 = currLine;
+						}
+						else if (Integer.valueOf(currLine.indexOf(0)) == 4) {
+							a4 = currLine;
+						}
+					}
+					else if (Character.isDigit(currLine.indexOf(0))) {
+						correct = Integer.valueOf(currLine);
 					}
 				}
+				
+				medQuestions.add(new Question(question, a1, a2, a3, a4, correct));
+				numMed++;
 			}
 			
-			medReader.close();
+			medScan.close();
 		}
 		
-		catch (FileNotFoundException nofile) {
-			System.out.println("Please insert a question file named 'medQuestions.dat' into the folder, then try again.");
+		catch (IOException error) {
+			error.printStackTrace();
 		}
 	}
 	
 	public void importHard() {
 		try {
-			int i = 0;
-			File hardQ = new File("hardQuestions.dat");
-			Scanner hardReader = new Scanner(hardQ);
-			hardReader.useDelimiter("\r");
+			FileReader hardQ = new FileReader("hardQuestions.dat");
+			BufferedReader hardReader = new BufferedReader(hardQ);
+			Scanner hardScan = new Scanner(hardReader);
 			
-			while (hardReader.hasNextLine()) {
-				if (hardReader.hasNextInt()) {
-					hardSize = hardReader.nextInt();
-					hardQuestions = new String[hardSize];
-				}
-				else {
-					if (i < hardSize) {
-						hardQuestions[i] = hardReader.nextLine();
-						i++;
+			String currLine;
+			String question = "";
+			String a1 = "";
+			String a2 = "";
+			String a3 = "";
+			String a4 = "";
+			int correct = 0;
+			
+			while (hardScan.hasNext()) {				
+				while (correct == 0) {
+					currLine = hardScan.nextLine();
+					
+					if (currLine.contains("?")) {
+						question = currLine;
 					}
-					else {
-						System.out.println("More questions than max number listed detected.  Ignoring inputs after question #" + hardSize + ".");
+					else if (currLine.contains(")")) {
+						if (Integer.valueOf(currLine.indexOf(0)) == 1) {
+							a1 = currLine;
+						}
+						else if (Integer.valueOf(currLine.indexOf(0)) == 2) {
+							a2 = currLine;
+						}
+						else if (Integer.valueOf(currLine.indexOf(0)) == 3) {
+							a3 = currLine;
+						}
+						else if (Integer.valueOf(currLine.indexOf(0)) == 4) {
+							a4 = currLine;
+						}
+					}
+					else if (Character.isDigit(currLine.indexOf(0))) {
+						correct = Integer.valueOf(currLine);
 					}
 				}
+				
+				hardQuestions.add(new Question(question, a1, a2, a3, a4, correct));
+				numHard++;
 			}
 			
-			hardReader.close();
+			hardScan.close();
 		}
 		
-		catch (FileNotFoundException nofile) {
-			System.out.println("Please insert a question file named 'hardQuestions.dat' into the folder, then try again.");
+		catch (IOException error) {
+			error.printStackTrace();
 		}
 	}
 	
-	public String getEasyQ(int a) {
-		return easyQuestions[a];
+	public void getEasyQ() {
+		if (currEasyQ > numEasy-1) {
+			currEasyQ = 0;
+		}
+		
+		System.out.println(easyQuestions.get(currEasyQ).getQuestion());
+		System.out.println(easyQuestions.get(currEasyQ).getAnswerOne());
+		System.out.println(easyQuestions.get(currEasyQ).getAnswerTwo());
+		System.out.println(easyQuestions.get(currEasyQ).getAnswerThree());
+		System.out.println(easyQuestions.get(currEasyQ).getAnswerFour());
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter the number choice of the correct answer.");
+		int answer = input.nextInt();
+		if (answer == easyQuestions.get(currEasyQ).getCorrectAnswer()) {
+			System.out.println("Correct!");
+			currEasyQ++;
+			//Increase current player's score
+		}
+		else {
+			System.out.println("Incorrect.");
+			currEasyQ++;
+		}
+		input.close();
 	}
 	
-	public String getMedQ(int a) {
-		return medQuestions[a];
+	public void getMedQ() {
+		if (currMedQ > numMed-1) {
+			currMedQ = 0;
+		}
+		
+		System.out.println(medQuestions.get(currMedQ).getQuestion());
+		System.out.println(medQuestions.get(currMedQ).getAnswerOne());
+		System.out.println(medQuestions.get(currMedQ).getAnswerTwo());
+		System.out.println(medQuestions.get(currMedQ).getAnswerThree());
+		System.out.println(medQuestions.get(currMedQ).getAnswerFour());
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter the number choice of the correct answer.");
+		int answer = input.nextInt();
+		if (answer == medQuestions.get(currMedQ).getCorrectAnswer()) {
+			System.out.println("Correct!");
+			currMedQ++;
+			//Increase current player's score
+		}
+		else {
+			System.out.println("Incorrect.");
+			currMedQ++;
+		}
+		input.close();
 	}
 	
-	public String getHardQ(int a) {
-		return hardQuestions[a];
+	public void getHardQ() {
+		if (currHardQ > numHard-1) {
+			currHardQ = 0;
+		}
+		
+		System.out.println(hardQuestions.get(currHardQ).getQuestion());
+		System.out.println(hardQuestions.get(currHardQ).getAnswerOne());
+		System.out.println(hardQuestions.get(currHardQ).getAnswerTwo());
+		System.out.println(hardQuestions.get(currHardQ).getAnswerThree());
+		System.out.println(hardQuestions.get(currHardQ).getAnswerFour());
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter the number choice of the correct answer.");
+		int answer = input.nextInt();
+		if (answer == hardQuestions.get(currHardQ).getCorrectAnswer()) {
+			System.out.println("Correct!");
+			currHardQ++;
+			//Increase current player's score
+		}
+		else {
+			System.out.println("Incorrect.");
+			currHardQ++;
+		}
+		input.close();
 	}
 }
