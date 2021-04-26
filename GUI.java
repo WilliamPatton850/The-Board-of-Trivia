@@ -11,6 +11,7 @@ class GUI{
 		
 		GUI(){
 			newPlayer = new PlayerStorage();
+			playerTest = new Player();
 		}
 		
 		// function to start 
