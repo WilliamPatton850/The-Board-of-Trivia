@@ -3,10 +3,6 @@ import java.awt.*;
 import java.awt.Font;
 import java.awt.event.*;
 class GUI{
-		private int numOfPlayer;
-		private char startRankingLogin;
-		private char startOrRanking;
-		
 		private PlayerStorage newPlayer;
 		private Player playerTest;
 		
@@ -42,7 +38,7 @@ class GUI{
 			});
 			
 			registration.setFont(f);
-			registration.setBounds(310,400, 150, 50);
+			registration.setBounds(310,400, 150, 50); 
 			registration.addActionListener(new ActionListener() {
 				
 				@Override
@@ -55,6 +51,16 @@ class GUI{
 			
 			rankButton.setFont(f);
 			rankButton.setBounds(310,300,150,50);
+			rankButton.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					menuFrame.setVisible(false);
+					PlayerRanking newRanking = new PlayerRanking();
+					newRanking.start();
+					
+				}
+			});
 			
 			gameLabel.setLocation(4,4);
 			gameLabel.setFont(f);
@@ -176,7 +182,7 @@ class GUI{
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					ContinuePage.setVisible(false);
-					selectNumPlayer();
+					menu();
 				}
 			});
 			
@@ -298,7 +304,6 @@ class GUI{
 		//login screen
 		public void loginSelect(int numPlayer) {
 			
-			numOfPlayer = numPlayer;
 			JFrame loginFrame = new JFrame("Login");
 			JLabel loginLabel = new JLabel("Login");
 			JLabel userNameLabel = new JLabel("User Name: ");
