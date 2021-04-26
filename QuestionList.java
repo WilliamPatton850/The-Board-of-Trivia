@@ -4,20 +4,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class QuestionList {
-	int easyPoints = 5;
-	int numEasy = 0;
+	int numEasy = 2;
 	int currEasyQ = 0;
-	int medPoints = 10;
-	int numMed = 0;
+	int numMed = 2;
 	int currMedQ = 0;
-	int hardPoints = 15;
-	int numHard = 0;
+	int numHard = 2;
 	int currHardQ = 0;
 	private ArrayList<Question> easyQuestions = new ArrayList<>();
 	private ArrayList<Question> medQuestions = new ArrayList<>();
 	private ArrayList<Question> hardQuestions = new ArrayList<>();
 	
+	public void importAll() {
+		//importEasy();
+		//importMed();
+		//importHard();
+		Question eq1 = new Question("String question", "String a1"," String a2", "String a3", "String a4", 1);
+		Question eq2 = new Question("String question", "String b2"," String b2", "String b3", "String b4", 2);
+		easyQuestions.add(eq1);
+		easyQuestions.add(eq2);
+	}
 	public void importEasy() {
 		try {
 			FileReader easyQ = new FileReader("easyQuestions.dat");
@@ -174,78 +181,32 @@ public class QuestionList {
 		}
 	}
 	
-	public void getEasyQ() {
+	public Question getEasyQ() {
 		if (currEasyQ > numEasy-1) {
 			currEasyQ = 0;
 		}
 		
-		System.out.println(easyQuestions.get(currEasyQ).getQuestion());
-		System.out.println(easyQuestions.get(currEasyQ).getAnswerOne());
-		System.out.println(easyQuestions.get(currEasyQ).getAnswerTwo());
-		System.out.println(easyQuestions.get(currEasyQ).getAnswerThree());
-		System.out.println(easyQuestions.get(currEasyQ).getAnswerFour());
-		Scanner input = new Scanner(System.in);
-		System.out.println("Enter the number choice of the correct answer.");
-		int answer = input.nextInt();
-		if (answer == easyQuestions.get(currEasyQ).getCorrectAnswer()) {
-			System.out.println("Correct!");
-			currEasyQ++;
-			//Increase current player's score
-		}
-		else {
-			System.out.println("Incorrect.");
-			currEasyQ++;
-		}
-		input.close();
+		Question q = easyQuestions.get(currEasyQ);
+		currEasyQ++;
+		return q;
 	}
 	
-	public void getMedQ() {
+	public Question getMedQ() {
 		if (currMedQ > numMed-1) {
 			currMedQ = 0;
 		}
 		
-		System.out.println(medQuestions.get(currMedQ).getQuestion());
-		System.out.println(medQuestions.get(currMedQ).getAnswerOne());
-		System.out.println(medQuestions.get(currMedQ).getAnswerTwo());
-		System.out.println(medQuestions.get(currMedQ).getAnswerThree());
-		System.out.println(medQuestions.get(currMedQ).getAnswerFour());
-		Scanner input = new Scanner(System.in);
-		System.out.println("Enter the number choice of the correct answer.");
-		int answer = input.nextInt();
-		if (answer == medQuestions.get(currMedQ).getCorrectAnswer()) {
-			System.out.println("Correct!");
-			currMedQ++;
-			//Increase current player's score
-		}
-		else {
-			System.out.println("Incorrect.");
-			currMedQ++;
-		}
-		input.close();
+		Question q = medQuestions.get(currMedQ);
+		currMedQ++;
+		return q;
 	}
 	
-	public void getHardQ() {
+	public Question  getHardQ() {
 		if (currHardQ > numHard-1) {
 			currHardQ = 0;
 		}
-		
-		System.out.println(hardQuestions.get(currHardQ).getQuestion());
-		System.out.println(hardQuestions.get(currHardQ).getAnswerOne());
-		System.out.println(hardQuestions.get(currHardQ).getAnswerTwo());
-		System.out.println(hardQuestions.get(currHardQ).getAnswerThree());
-		System.out.println(hardQuestions.get(currHardQ).getAnswerFour());
-		Scanner input = new Scanner(System.in);
-		System.out.println("Enter the number choice of the correct answer.");
-		int answer = input.nextInt();
-		if (answer == hardQuestions.get(currHardQ).getCorrectAnswer()) {
-			System.out.println("Correct!");
-			currHardQ++;
-			//Increase current player's score
-		}
-		else {
-			System.out.println("Incorrect.");
-			currHardQ++;
-		}
-		input.close();
+		Question q = hardQuestions.get(currHardQ);
+		currHardQ++;
+		return q;
 	}
 }
