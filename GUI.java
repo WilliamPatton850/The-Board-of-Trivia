@@ -6,6 +6,7 @@ class GUI{
 		private int numOfPlayer;
 		private char startRankingLogin;
 		private char startOrRanking;
+		
 		private PlayerStorage newPlayer;
 		private Player playerTest;
 		
@@ -196,6 +197,45 @@ class GUI{
 			
 		}
 		
+		
+		//show that the information is incorrect
+		public void showWrongValidation() {
+			JPanel Wrong = new JPanel();
+			JFrame WrongFrame = new JFrame("Wrong");
+			
+			JLabel WrongLabel = new JLabel("Wrong UserName or Password");
+			
+			JButton Continue = new JButton("Continue back to login");
+			Continue.setFont(new Font("TimesRoman",Font.BOLD,25));
+			Dimension size0 = Continue.getPreferredSize();
+			Continue.setBounds(260,400,size0.width,size0.height);
+			
+			Continue.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					WrongFrame.setVisible(false);
+					selectNumPlayer();
+				}
+			});
+			
+			WrongLabel.setFont(new Font("TimesRoman",Font.BOLD,30));
+			Dimension size = WrongLabel.getPreferredSize();
+			WrongLabel.setBounds(200,100,size.width,size.height);
+			
+			
+			Wrong.add(WrongLabel);
+			Wrong.add(Continue);
+			Wrong.setLayout(null);
+			
+			WrongFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			WrongFrame.add(Wrong);
+			WrongFrame.setSize(800,600);
+			WrongFrame.setVisible(true);
+			
+		}
+		
+		
 		//3 4 5 players to login
 		public void selectNumPlayer() {	
 			
@@ -260,7 +300,7 @@ class GUI{
 			
 			numOfPlayer = numPlayer;
 			JFrame loginFrame = new JFrame("Login");
-			JLabel loginLabel = new JLabel("Player1");
+			JLabel loginLabel = new JLabel("Login");
 			JLabel userNameLabel = new JLabel("User Name: ");
 			JLabel passwordLabel = new JLabel("Password: ");
 			JPanel loginPanel = new JPanel();
@@ -302,6 +342,11 @@ class GUI{
 						Game g = new Game(numPlayer);
 						g.startGame();
 					}
+					else {
+						loginFrame.setVisible(false);
+						showWrongValidation();
+					}
+							
 					
 				}
 			});
@@ -319,4 +364,7 @@ class GUI{
 			loginFrame.setSize(800,600);
 			loginFrame.setVisible(true);
 		}
+		
+		
+		
 }
