@@ -215,7 +215,7 @@ class GUI{
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					WrongFrame.setVisible(false);
-					selectNumPlayer();
+					menu();
 				}
 			});
 			
@@ -342,6 +342,7 @@ class GUI{
 						Game g = new Game(numPlayer);
 						g.startGame();
 					}
+					
 					else {
 						loginFrame.setVisible(false);
 						showWrongValidation();
