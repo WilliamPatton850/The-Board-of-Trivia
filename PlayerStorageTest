@@ -1,0 +1,20 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class PlayerStorageTest {
+
+	@Test
+	void test() {
+		PlayerStorage newPlayer = new PlayerStorage();
+		Player boi = new Player("boi", "boi", "boi", "boi");
+		Player gal = new Player("gal", "gal", "gal", "gal");
+		newPlayer.input(boi);
+		newPlayer.input(gal);
+		
+		assertEquals(true, newPlayer.IsPlayerLogin(boi.GetPlayerName(), "boi"));
+		assertEquals(true, newPlayer.IsPlayerLogin(gal.GetPlayerName(), "gal"));
+		assertEquals(false, newPlayer.IsPlayerLogin("Pretty", "helicopter"));
+	}
+
+}
