@@ -3,22 +3,23 @@ import java.awt.*;
 import java.awt.Font;
 import java.awt.event.*;
 class GUI{
-		int numOfPlayer;
-		char startRankingLogin;
-		char startOrRanking;
-		PlayerStorage newPlayer = new PlayerStorage();
-		Player playerTest = new Player();
+		private int numOfPlayer;
+		private char startRankingLogin;
+		private char startOrRanking;
+		private PlayerStorage newPlayer;
+		private Player playerTest;
 		
 		GUI(){
+			newPlayer = new PlayerStorage();
 		}
 		
 		// function to start 
-		void start() {
+		public void start() {
 			menu();
 		}
 		
 		//The main page of the GUI
-		void menu(){
+		public void menu(){
 			
 			JFrame menuFrame = new JFrame("Menu");
 			JLabel gameLabel = new JLabel("Pensatrivia");
@@ -73,7 +74,7 @@ class GUI{
 		}
 		
 		//The Registration Page
-		void loginPage() {
+		public void loginPage() {
 			JPanel registration = new JPanel();
 			JFrame Register = new JFrame("Register");
 			
@@ -156,7 +157,7 @@ class GUI{
 		}
 		
 		//Show the userName so user can copy to login into game
-		void showUserName() {
+		public void showUserName() {
 			JPanel Continue = new JPanel();
 			JFrame ContinuePage = new JFrame("Register");
 			
@@ -195,7 +196,7 @@ class GUI{
 		}
 		
 		//3 4 5 players to login
-		void selectNumPlayer() {	
+		public void selectNumPlayer() {	
 			
 			int numReturn;
 			JFrame numPlayerFrame = new JFrame("Number of Player");
@@ -254,10 +255,11 @@ class GUI{
 		}
 		
 		//login screen
-		void loginSelect(int numPlayer) {
+		public void loginSelect(int numPlayer) {
 			
+			numOfPlayer = numPlayer;
 			JFrame loginFrame = new JFrame("Login");
-			JLabel loginLabel = new JLabel("Login");
+			JLabel loginLabel = new JLabel("Player1");
 			JLabel userNameLabel = new JLabel("User Name: ");
 			JLabel passwordLabel = new JLabel("Password: ");
 			JPanel loginPanel = new JPanel();
@@ -287,12 +289,14 @@ class GUI{
 			
 			passwordText.setBounds(320,220,180,40);
 			
+			
+			
 			//Check if login available link to board
 			loginButton.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					if(!newPlayer.IsPlayerLogin(userNameText.getText(), passwordText.getText())) {
+					if(newPlayer.IsPlayerLogin(userNameText.getText(), passwordText.getText())) {
 						loginFrame.setVisible(false);
 						Game g = new Game(numPlayer);
 						g.startGame();
