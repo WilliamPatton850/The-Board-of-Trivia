@@ -300,6 +300,10 @@ public class Game {
 		if(hardness=='e') {
 			
 		}
+		else if(hardness == 'm') {
+			
+		}
+		/*
 		else if(hardness =='m') {
 			tiles.get(playerPlace.get(currPlayer)).get(currPlayer).setBackground(Color.blue);
 			Color c;
@@ -335,6 +339,7 @@ public class Game {
 			score =playerScore.get(currPlayer) ;
 			playerScore.put(currPlayer, score-roll);
 		}
+		*/
 		else {
 			int score;
 			score =playerScore.get(currPlayer) ;
