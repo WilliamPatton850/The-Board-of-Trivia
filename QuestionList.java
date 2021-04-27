@@ -25,6 +25,54 @@ public class QuestionList {
 		easyQuestions.add(eq1);
 		easyQuestions.add(eq2);
 	}
+	
+	//showing that reading from file works 
+	public void importEasy() { 
+	  try {
+		FileReader easyQ = new FileReader("easyQuestions.txt"); 
+		BufferedReader easyReader = new BufferedReader(easyQ);
+		Scanner easyScan = new Scanner(easyReader);
+		
+		String currLine = "";
+		String question = "";
+		String a1 = "";
+		String a2 = "";
+		String a3 = "";
+		String a4 = "";
+		int correct = 0;
+		
+		while(easyScan.hasNextLine()) {
+			currLine = easyScan.nextLine();
+			
+		if (currLine.contains("?")) {
+			question = currLine;
+		}
+		else if(currLine.contains("1)")) {
+			a1 = currLine;
+		}
+		else if(currLine.contains("2)")) {
+			a2 = currLine;
+		}
+		else if(currLine.contains("3)")) {
+			a3 = currLine;
+		}
+		else if(currLine.contains("4)")) {
+			a4 = currLine;
+		}
+		
+		}
+				easyQuestions.add(new Question(question, a1, a2, a3, a4, correct)); 
+				numEasy++;
+			
+			
+			easyScan.close();
+		}
+			catch (IOException error) {
+				error.printStackTrace();
+			}
+	}
+	
+	/*
 	public void importEasy() {
 		try {
 			FileReader easyQ = new FileReader("easyQuestions.dat");
@@ -76,6 +124,7 @@ public class QuestionList {
 			error.printStackTrace();
 		}
 	}
+	*/
 	
 	public void importMed() {
 		try {
