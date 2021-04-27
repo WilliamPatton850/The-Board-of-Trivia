@@ -8,22 +8,30 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class PlayerRanking {
+public class PlayerRanking{
 	private String[] Ranking;
+	private PlayerStorage player;
 	
-	PlayerRanking(){
+	PlayerRanking(PlayerStorage player){
 		Ranking = new String[10];
+		this.player = player;
 	}
 	
 	public void start() {
 		theLeaderBoard();
 	}
 	
+	public void setRanking() {
+		for(int i = 0; i < player.getArraySize(); i++) {
+			Ranking[i] = player.returnUserName();
+		}
+	}
+	
 	public void theLeaderBoard() {
 		JPanel LeaderBoardPanel = new JPanel();
 		JFrame LeaderBoardFrame = new JFrame("LeaderBoard");
 		
-		JLabel leadBoard = new JLabel("LeaderBoard");
+		JLabel leadBoard = new JLabel("Ranking");
 		JLabel first = new JLabel("1. " + Ranking[0]);
 		JLabel second = new JLabel("2. " + Ranking[1]);
 		JLabel third = new JLabel("3. "+ Ranking[2]);
