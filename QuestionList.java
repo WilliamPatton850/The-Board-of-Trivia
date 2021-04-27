@@ -26,7 +26,6 @@ public class QuestionList {
 		easyQuestions.add(eq2);
 	}
 	
-	//showing that reading from file works 
 	public void importEasy() { 
 	  try {
 		FileReader easyQ = new FileReader("easyQuestions.txt"); 
@@ -41,32 +40,33 @@ public class QuestionList {
 		String a4 = "";
 		int correct = 0;
 		
-		while(easyScan.hasNextLine()) {
-			currLine = easyScan.nextLine();
-			
-		if (currLine.contains("?")) {
-			question = currLine;
-		}
-		else if(currLine.contains("1)")) {
-			a1 = currLine;
-		}
-		else if(currLine.contains("2)")) {
-			a2 = currLine;
-		}
-		else if(currLine.contains("3)")) {
-			a3 = currLine;
-		}
-		else if(currLine.contains("4)")) {
-			a4 = currLine;
-		}
-		else if(currLine.contains("*")) {
-			correct = Integer.valueOf(currLine.indexOf(0));
-		}
 		
-		}
-				easyQuestions.add(new Question(question, a1, a2, a3, a4, correct)); 
-				numEasy++;
+		while(easyScan.hasNextLine()) {
+			  currLine = easyScan.nextLine();
 			
+		      if (currLine.contains("?")) {
+			      question = currLine;
+		      }
+		      else if(currLine.contains("1)")) {
+			      a1 = currLine;
+		      }
+		      else if(currLine.contains("2)")) {
+			      a2 = currLine;
+		      }
+		      else if(currLine.contains("3)")) {
+		       	  a3 = currLine;
+	 	      }
+		      else if(currLine.contains("4)")) {
+			      a4 = currLine;
+		      }
+		      else if(currLine.contains("*")) {
+			      correct = Integer.valueOf(currLine.indexOf(0));  //FIX: this is computing incorrect value 
+		    	  System.out.println(correct); //checking value
+			      easyQuestions.add(new Question(question, a1, a2, a3, a4, correct)); 
+				  numEasy++;
+		      }
+		      
+		}
 			
 			easyScan.close();
 		}
@@ -129,6 +129,57 @@ public class QuestionList {
 	}
 	*/
 	
+	public void importMed() { 
+		  try {
+			FileReader medQ = new FileReader("medQuestions.txt"); 
+			BufferedReader medReader = new BufferedReader(medQ);
+			Scanner medScan = new Scanner(medReader);
+			
+			String currLine = "";
+			String question = "";
+			String a1 = "";
+			String a2 = "";
+			String a3 = "";
+			String a4 = "";
+			int correct = 0;
+			
+			
+			while(medScan.hasNextLine()) {
+				  currLine = medScan.nextLine();
+				
+			      if (currLine.contains("?")) {
+				      question = currLine;
+			      }
+			      else if(currLine.contains("1)")) {
+				      a1 = currLine;
+			      }
+			      else if(currLine.contains("2)")) {
+				      a2 = currLine;
+			      }
+			      else if(currLine.contains("3)")) {
+			       	  a3 = currLine;
+		 	      }
+			      else if(currLine.contains("4)")) {
+				      a4 = currLine;
+			      }
+			      else if(currLine.contains("*")) {
+				      correct = Integer.valueOf(currLine.indexOf(0));  //FIX: this is computing incorrect value 
+			    	  System.out.println(correct); //checking value
+				      medQuestions.add(new Question(question, a1, a2, a3, a4, correct)); 
+					  numMed++;
+			      }
+			      
+			}
+				
+				medScan.close();
+			}
+				catch (IOException error) {
+					error.printStackTrace();
+				}
+		}
+	
+	
+	/*
 	public void importMed() {
 		try {
 			FileReader medQ = new FileReader("medQuestions.dat");
@@ -180,7 +231,58 @@ public class QuestionList {
 			error.printStackTrace();
 		}
 	}
+	*/
 	
+	public void importHard() { 
+		  try {
+			FileReader hardQ = new FileReader("hardQuestions.txt"); 
+			BufferedReader hardReader = new BufferedReader(hardQ);
+			Scanner hardScan = new Scanner(hardReader);
+			
+			String currLine = "";
+			String question = "";
+			String a1 = "";
+			String a2 = "";
+			String a3 = "";
+			String a4 = "";
+			int correct = 0;
+			
+			
+			while(hardScan.hasNextLine()) {
+				  currLine = hardScan.nextLine();
+				
+			      if (currLine.contains("?")) {
+				      question = currLine;
+			      }
+			      else if(currLine.contains("1)")) {
+				      a1 = currLine;
+			      }
+			      else if(currLine.contains("2)")) {
+				      a2 = currLine;
+			      }
+			      else if(currLine.contains("3)")) {
+			       	  a3 = currLine;
+		 	      }
+			      else if(currLine.contains("4)")) {
+				      a4 = currLine;
+			      }
+			      else if(currLine.contains("*")) {
+				      correct = Integer.valueOf(currLine.indexOf(0));  //FIX: this is computing incorrect value 
+			    	  System.out.println(correct); //checking value
+				      hardQuestions.add(new Question(question, a1, a2, a3, a4, correct)); 
+					  numHard++;
+			      }
+			      
+			}
+				
+				hardScan.close();
+			}
+				catch (IOException error) {
+					error.printStackTrace();
+				}
+		}
+	
+	/*
 	public void importHard() {
 		try {
 			FileReader hardQ = new FileReader("hardQuestions.dat");
@@ -232,6 +334,7 @@ public class QuestionList {
 			error.printStackTrace();
 		}
 	}
+	*/
 	
 	public Question getEasyQ() {
 		if (currEasyQ > numEasy-1) {
