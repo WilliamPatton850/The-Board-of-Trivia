@@ -186,6 +186,8 @@ public class Game {
 	void getQuestion(Character hardness) {
 		//qList.importAll();
 		qList.importEasy();
+		qList.importMed();
+		qList.importHard();
 		Question q;
 		int correctAns;
 		JPanel qPanel = new JPanel();
