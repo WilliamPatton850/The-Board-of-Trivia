@@ -56,7 +56,8 @@ class GUI{
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					menuFrame.setVisible(false);
-					PlayerRanking newRanking = new PlayerRanking();
+					PlayerRanking newRanking = new PlayerRanking(newPlayer);
+					newRanking.setRanking();
 					newRanking.start();
 					
 				}
