@@ -184,7 +184,8 @@ public class Game {
 		levelFrame.setVisible(true);
 	}
 	void getQuestion(Character hardness) {
-		qList.importAll();
+		//qList.importAll();
+		qList.importEasy();
 		Question q;
 		int correctAns;
 		JPanel qPanel = new JPanel();
