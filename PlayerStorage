@@ -4,10 +4,14 @@ import java.util.ArrayList;
 public class PlayerStorage {
 	private ArrayList<Player> array;
 	
+	
 	private String userName;
+	private int num;
 	
 	public PlayerStorage() {
 		array = new ArrayList<Player>();
+		userName = "";
+		num = 0;
 	}
 	
 	public PlayerStorage(PlayerStorage Player) {
@@ -29,6 +33,18 @@ public class PlayerStorage {
 		return false;
 	
 	}
+	
+	public String returnUserName() {
+		userName = array.get(num).GetPlayerName();
+		num++;
+		return userName;
+	}
+	
+	public int getArraySize() {
+		return array.size();
+	}
+	
+	
 	
 	
 }
