@@ -59,6 +59,9 @@ public class QuestionList {
 		else if(currLine.contains("4)")) {
 			a4 = currLine;
 		}
+		else if(currLine.contains("*")) {
+			correct = Integer.valueOf(currLine.indexOf(0));
+		}
 		
 		}
 				easyQuestions.add(new Question(question, a1, a2, a3, a4, correct)); 
