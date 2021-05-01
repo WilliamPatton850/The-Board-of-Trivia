@@ -16,6 +16,13 @@ public class Game {
 	JLabel rolled;
 	QuestionList qList = new QuestionList();
 	
+	JLabel p1;
+	JLabel p2;
+	JLabel p3;
+	JLabel p4;
+	JLabel p5;
+	JLabel p6;
+	
 	Game(int numP){
 		numPlayer =numP ;
 		currPlayer = 0;
@@ -46,34 +53,40 @@ public class Game {
 			chessBoard.add( square );
 			int row = (i / 8) % 2;
 			if(i==17) {
-				JLabel p1 = new JLabel("Player 1 score: 0");
-				square.add(p1);
 				playerScore.put(1, 0);
+				p1 = new JLabel("Player 1 score: 0");
+				square.add(p1);
+				//playerScore.put(1, 0);
 			}
 			if(i==18) {
-				JLabel p2 = new JLabel("Player 2 score: 0");
-				square.add(p2);
 				playerScore.put(2, 0);
+				p2 = new JLabel("Player 2 score: 0");
+				square.add(p2);
+				//playerScore.put(2, 0);
 			}
 			if(i==19) {
-				JLabel p3 = new JLabel("Player 3 score: 0");
-				square.add(p3);
 				playerScore.put(3, 0);
+				p3 = new JLabel("Player 3 score: 0");
+				square.add(p3);
+				//playerScore.put(3, 0);
 			}
 			if(i==20 && numPlayer>3) {
-				JLabel p4 = new JLabel("Player 4 score: 0");
-				square.add(p4);
 				playerScore.put(4, 0);
+				p4 = new JLabel("Player 4 score: 0");
+				square.add(p4);
+				//playerScore.put(4, 0);
 			}
 			if(i == 21 && numPlayer >4) {
-				JLabel p5 = new JLabel("Player 5 score: 0");
-				square.add(p5);
 				playerScore.put(5, 0);
+				p5 = new JLabel("Player 5 score: 0");
+				square.add(p5);
+				//playerScore.put(5, 0);
 			}
 			if(i==22 && numPlayer >5) {
-				JLabel p6 = new JLabel("Player 6 score: 0");
-				square.add(p6);
 				playerScore.put(6, 0);
+				p6 = new JLabel("Player 6 score: 0");
+				square.add(p6);
+				//playerScore.put(6, 0);
 			}
 			if(i==27) {
 				square.setLayout(new GridLayout(1,1));
@@ -336,12 +349,48 @@ public class Game {
 			int score;
 			score =playerScore.get(currPlayer) ;
 			playerScore.put(currPlayer, score-roll);
+			if(currPlayer == 1) {
+				p1.setText("Player 1 score: " + playerScore.get(1));
+			}
+			else if(currPlayer == 2) {
+				p2.setText("Player 2 score: " + playerScore.get(2));
+			}
+			else if(currPlayer == 3) {
+				p3.setText("Player 3 score: " + playerScore.get(3));
+			}
+			else if(currPlayer == 4) {
+				p4.setText("Player 4 score: " + playerScore.get(4));
+			}
+			else if(currPlayer == 5) {
+				p5.setText("Player 5 score: " + playerScore.get(5));
+			}
+			else if(currPlayer == 6) {
+				p6.setText("Player 6 score: " + playerScore.get(6));
+			}
 		}
 		
 		else {
 			int score;
 			score =playerScore.get(currPlayer) ;
 			playerScore.put(currPlayer, score-roll);
+			if(currPlayer == 1) {
+				p1.setText("Player 1 score: " + playerScore.get(1));
+			}
+			else if(currPlayer == 2) {
+				p2.setText("Player 2 score: " + playerScore.get(2));
+			}
+			else if(currPlayer == 3) {
+				p3.setText("Player 3 score: " + playerScore.get(3));
+			}
+			else if(currPlayer == 4) {
+				p4.setText("Player 4 score: " + playerScore.get(4));
+			}
+			else if(currPlayer == 5) {
+				p5.setText("Player 5 score: " + playerScore.get(5));
+			}
+			else if(currPlayer == 6) {
+				p6.setText("Player 6 score: " + playerScore.get(6));
+			}
 		}
 		if(currPlayer==numPlayer-1) {
 			currPlayer =0;
@@ -391,12 +440,66 @@ public class Game {
 		score =playerScore.get(currPlayer) ;
 		if(hardness == 'e') {
 			playerScore.put(currPlayer, score+roll);
+			if(currPlayer == 1) {
+				p1.setText("Player 1 score: " + playerScore.get(1));
+			}
+			else if(currPlayer == 2) {
+				p2.setText("Player 2 score: " + playerScore.get(2));
+			}
+			else if(currPlayer == 3) {
+				p3.setText("Player 3 score: " + playerScore.get(3));
+			}
+			else if(currPlayer == 4) {
+				p4.setText("Player 4 score: " + playerScore.get(4));
+			}
+			else if(currPlayer == 5) {
+				p5.setText("Player 5 score: " + playerScore.get(5));
+			}
+			else if(currPlayer == 6) {
+				p6.setText("Player 6 score: " + playerScore.get(6));
+			}
 		}
 		else if(hardness =='m') {
 			playerScore.put(currPlayer, (score+roll)*2);
+			if(currPlayer == 1) {
+				p1.setText("Player 1 score: " + playerScore.get(1));
+			}
+			else if(currPlayer == 2) {
+				p2.setText("Player 2 score: " + playerScore.get(2));
+			}
+			else if(currPlayer == 3) {
+				p3.setText("Player 3 score: " + playerScore.get(3));
+			}
+			else if(currPlayer == 4) {
+				p4.setText("Player 4 score: " + playerScore.get(4));
+			}
+			else if(currPlayer == 5) {
+				p5.setText("Player 5 score: " + playerScore.get(5));
+			}
+			else if(currPlayer == 6) {
+				p6.setText("Player 6 score: " + playerScore.get(6));
+			}
 		}
 		else {
 			playerScore.put(currPlayer, (score+roll)*3);
+			if(currPlayer == 1) {
+				p1.setText("Player 1 score: " + playerScore.get(1));
+			}
+			else if(currPlayer == 2) {
+				p2.setText("Player 2 score: " + playerScore.get(2));
+			}
+			else if(currPlayer == 3) {
+				p3.setText("Player 3 score: " + playerScore.get(3));
+			}
+			else if(currPlayer == 4) {
+				p4.setText("Player 4 score: " + playerScore.get(4));
+			}
+			else if(currPlayer == 5) {
+				p5.setText("Player 5 score: " + playerScore.get(5));
+			}
+			else if(currPlayer == 6) {
+				p6.setText("Player 6 score: " + playerScore.get(6));
+			}
 		}
 		
 	}
