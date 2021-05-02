@@ -5,11 +5,12 @@ import java.awt.event.*;
 class GUI{
 		private PlayerStorage newPlayer;
 		private Player playerTest;
+		PlayerRanking newRanking;
 		
 		GUI(){
 			newPlayer = new PlayerStorage();
-			playerTest = new Player();
 		}
+		
 		
 		// function to start 
 		public void start() {
@@ -56,8 +57,7 @@ class GUI{
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					menuFrame.setVisible(false);
-					PlayerRanking newRanking = new PlayerRanking(newPlayer);
-					newRanking.setRanking();
+					newRanking = new PlayerRanking(newPlayer);
 					newRanking.start();
 					
 				}
@@ -108,10 +108,10 @@ class GUI{
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					if(firstT.getText().length() > 1 && lastT.getText().length() > 1 && emailT.getText().length() > 1 && passwordT.getText().length() > 1 ) {
-						Register.setVisible(false);
-						playerTest.setAll(firstT.getText(), lastT.getText(), emailT.getText(), passwordT.getText());
+						playerTest = new Player(firstT.getText(), lastT.getText(), emailT.getText(), passwordT.getText());
 						newPlayer.input(playerTest);
 						showUserName();
+						Register.setVisible(false);
 					}
 	
 					
