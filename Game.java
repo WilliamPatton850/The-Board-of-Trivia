@@ -718,6 +718,7 @@ public class Game {
 				p = i;
 			}
 		}
+		p++;
 		JLabel winner = new JLabel("Player"+ p +" won");
 		winner.setFont(new Font("TimesRoman",Font.BOLD,30));
 		Dimension h = winner.getPreferredSize();
