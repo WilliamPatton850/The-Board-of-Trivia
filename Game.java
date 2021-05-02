@@ -1,10 +1,3 @@
-package triv;
-
-import java.util.*;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import java.util.*;
 import javax.swing.*;
@@ -348,12 +341,6 @@ public class Game {
 			tiles.get(place).get(currPlayer).setBackground(c);
 			playerPlace.put(currPlayer, place);
 			rolled.setText("Player: "+currPlayer+1+" answered wrong!");
-			if(currPlayer==numPlayer-1) {
-				currPlayer =0;
-			}
-			else {
-				currPlayer++;
-			}
 		}
 		else if(hardness =='m') {
 			tiles.get(playerPlace.get(currPlayer)).get(currPlayer).setBackground(Color.blue);
@@ -388,7 +375,7 @@ public class Game {
 			int p = Integer.valueOf(currPlayer)+1;
 			rolled.setText("Player"+ p+" subtract "+ roll);
 			int score;
-			score =playerScore.get(currPlayer) - roll ;
+			score =Integer.valueOf(playerScore.get(currPlayer))-roll;
 			playerScore.put(currPlayer, score);
 			if(currPlayer == 0) {
 				p1.setText("Player 1 score: " + playerScore.get(currPlayer));
@@ -409,18 +396,12 @@ public class Game {
 				p6.setText("Player 6 score: " + playerScore.get(currPlayer));
 			}
 			rolled.setText("Wrong! subtract: "+roll+" Points.");
-			if(currPlayer==numPlayer-1) {
-				currPlayer =0;
-			}
-			else {
-				currPlayer++;
-			}
 		}
 		
 		else {
 			int score;
-			score =playerScore.get(currPlayer) ;
-			playerScore.put(currPlayer, score-roll);
+			score =Integer.valueOf(playerScore.get(currPlayer)) - roll;
+			playerScore.put(currPlayer, score);
 			if(currPlayer == 0) {
 				p1.setText("Player 1 score: " + playerScore.get(0));
 			}
@@ -440,15 +421,17 @@ public class Game {
 				p6.setText("Player 6 score: " + playerScore.get(5));
 			}
 			int p = Integer.valueOf(currPlayer)+1;
-			rolled.setText("Player"+ p+" subtract "+ roll);
-			if(currPlayer==numPlayer-1) {
-				currPlayer =0;
-			}
-			else {
-				currPlayer++;
-			}
+			rolled.setText("Worong! subtract: "+ roll+"Points.");
+		}
+
+		if(currPlayer==numPlayer-1) {
+			currPlayer =0;
+		}
+		else {
+			currPlayer++;
 		}
 	}
+		
 	void updatePlayer(char hardness,int roll) {
 		tiles.get(playerPlace.get(currPlayer)).get(currPlayer).setBackground(Color.blue);
 		Color c;
