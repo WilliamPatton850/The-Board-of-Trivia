@@ -340,7 +340,7 @@ public class Game {
 			}
 			tiles.get(place).get(currPlayer).setBackground(c);
 			playerPlace.put(currPlayer, place);
-			rolled.setText("Player: "+currPlayer+1+" answered wrong!");
+			rolled.setText("Player: "+(currPlayer+1)+" answered wrong!");
 		}
 		else if(hardness =='m') {
 			tiles.get(playerPlace.get(currPlayer)).get(currPlayer).setBackground(Color.blue);
