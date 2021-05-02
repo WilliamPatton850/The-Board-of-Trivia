@@ -6,12 +6,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Game {
-	static JPanel chessBoard;
+	static JPanel board;
+	JFrame game;
 	static HashMap <Integer,ArrayList<JPanel>> tiles = new HashMap<>();
 	static int numPlayer;
 	static int currPlayer;
 	static HashMap<Integer,Integer> playerScore = new HashMap<>();
 	static HashMap<Integer,Integer> playerPlace = new HashMap<>();
+	ArrayList<Integer> rounds = new ArrayList<>();
 	JLabel rolled;
 	QuestionList qList = new QuestionList();
 	
@@ -28,16 +30,19 @@ public class Game {
 		for(int i =0;i<numPlayer;i++) {
 			playerPlace.put(i, 0);
 		}
+		for(int i =0; i < numPlayer; i++) {
+			rounds.add(0);
+		}
 	}
 	void startGame() {
-		JFrame game = new JFrame();
+		game = new JFrame();
 		Dimension boardSize = new Dimension(600, 600);
-		chessBoard = new JPanel();
-		chessBoard.setLayout( new GridLayout(8, 8,20,20) );
-		chessBoard.setPreferredSize( boardSize );
-		chessBoard.setBounds(0, 0, boardSize.width,boardSize.height);
+		board = new JPanel();
+		board.setLayout( new GridLayout(8, 8,20,20) );
+		board.setPreferredSize( boardSize );
+		board.setBounds(0, 0, boardSize.width,boardSize.height);
 		getSquares();
-		game.add(chessBoard);
+		game.add(board);
 		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		game.setSize(1400,1000);
 		game.setVisible(true);
@@ -49,7 +54,7 @@ public class Game {
 			Dimension pSize = new Dimension(1,1);
 			square.setPreferredSize(pSize);
 			square.setBounds(0,0,pSize.width,pSize.height);
-			chessBoard.add( square );
+			board.add( square );
 			int row = (i / 8) % 2;
 			if(i==17) {
 				playerScore.put(0, 0);
@@ -155,6 +160,11 @@ public class Game {
 		JButton medium = new JButton("medium");
 		JButton hard = new JButton("hard");
 		
+		JLabel choose = new JLabel("Choose the level of your question");
+		choose.setFont(new Font("TimesRoman",Font.BOLD,30));
+		Dimension size = choose.getPreferredSize();
+		choose.setBounds(175,100,size.width,size.height);
+		
 		easy.setFont(new Font("TimesRoman",Font.BOLD,30));
 		easy.setBounds(325,200,160,70);
 		
@@ -188,6 +198,7 @@ public class Game {
 		levelPanel.add(easy);
 		levelPanel.add(medium);
 		levelPanel.add(hard);
+		levelPanel.add(choose);
 		levelPanel.setLayout(null);
 		
 		levelFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -257,6 +268,18 @@ public class Game {
 				else {
 					showWrong(hardness,roll);
 				}
+				for(int i =0;i<rounds.size();i++) {
+					if(rounds.get(i)>=1) {
+						game.dispose();
+						showResult();
+					}
+				}
+				if(currPlayer==numPlayer-1) {
+					currPlayer =0;
+				}
+				else {
+					currPlayer++;
+				}
 			}
 		});
 		ans2.addActionListener(new ActionListener(){
@@ -268,6 +291,18 @@ public class Game {
 				}
 				else {
 					showWrong(hardness,roll);
+				}
+				for(int i =0;i<rounds.size();i++) {
+					if(rounds.get(i)>=1) {
+						game.dispose();
+						showResult();
+					}
+				}
+				if(currPlayer==numPlayer-1) {
+					currPlayer =0;
+				}
+				else {
+					currPlayer++;
 				}
 			}
 		});
@@ -281,6 +316,18 @@ public class Game {
 				else {
 					showWrong(hardness,roll);
 				}
+				for(int i =0;i<rounds.size();i++) {
+					if(rounds.get(i)>=1) {
+						game.dispose();
+						showResult();
+					}
+				}
+				if(currPlayer==numPlayer-1) {
+					currPlayer =0;
+				}
+				else {
+					currPlayer++;
+				}
 			}
 		});
 		ans4.addActionListener(new ActionListener(){
@@ -292,6 +339,18 @@ public class Game {
 				}
 				else {
 					showWrong(hardness,roll);
+				}
+				for(int i =0;i<rounds.size();i++) {
+					if(rounds.get(i)>=1) {
+						game.dispose();
+						showResult();
+					}
+				}
+				if(currPlayer==numPlayer-1) {
+					currPlayer =0;
+				}
+				else {
+					currPlayer++;
 				}
 			}
 		});
@@ -334,6 +393,7 @@ public class Game {
 			int place;
 			if(playerPlace.get(currPlayer)+roll>27) {
 				place = playerPlace.get(currPlayer)+roll-27;
+				rounds.set(currPlayer, rounds.get(currPlayer)+1);
 			}
 			else {
 				place = playerPlace.get(currPlayer)+roll;
@@ -366,6 +426,7 @@ public class Game {
 			int place;
 			if(playerPlace.get(currPlayer)+roll>27) {
 				place = playerPlace.get(currPlayer)+roll-27;
+				rounds.set(currPlayer, rounds.get(currPlayer)+1);
 			}
 			else {
 				place = playerPlace.get(currPlayer)+roll;
@@ -423,15 +484,7 @@ public class Game {
 			int p = Integer.valueOf(currPlayer)+1;
 			rolled.setText("Worong! subtract: "+ roll+"Points.");
 		}
-
-		if(currPlayer==numPlayer-1) {
-			currPlayer =0;
-		}
-		else {
-			currPlayer++;
-		}
 	}
-		
 	void updatePlayer(char hardness,int roll) {
 		tiles.get(playerPlace.get(currPlayer)).get(currPlayer).setBackground(Color.blue);
 		Color c;
@@ -456,6 +509,7 @@ public class Game {
 		int place;
 		if(playerPlace.get(currPlayer)+roll>27) {
 			place = playerPlace.get(currPlayer)+roll-27;
+			rounds.set(currPlayer, rounds.get(currPlayer)+1);
 		}
 		else {
 			place = playerPlace.get(currPlayer)+roll;
@@ -527,17 +581,10 @@ public class Game {
 			else if(currPlayer == 5) {
 				p6.setText("Player 6 score: " + playerScore.get(5));
 			}
-		}
-
-		if(currPlayer==numPlayer-1) {
-			currPlayer =0;
-		}
-		else {
-			currPlayer++;
-		}
-		
+		}	
 	}
 	void tileAdd(int place, ArrayList<JPanel> t) {
+
 		switch(place) {
 		case 0:{
 			tiles.put(0,t);
@@ -655,5 +702,32 @@ public class Game {
 			break;
 		}
 		}
+	}
+	void showResult() {
+		JFrame end = new JFrame();
+		Dimension boardSize = new Dimension(600,600);
+		JPanel endPanel = new JPanel();
+		endPanel.setLayout(null);
+		endPanel.setPreferredSize(boardSize);
+		endPanel.setBounds(0,0,boardSize.width,boardSize.height);
+		
+		int p = Integer.valueOf(currPlayer)+1;
+		JLabel winner = new JLabel("Player"+ p +" won");
+		winner.setFont(new Font("TimesRoman",Font.BOLD,30));
+		Dimension h = winner.getPreferredSize();
+		winner.setBounds(285,100,h.width,h.height);
+		
+		JLabel score = new JLabel("with the score of "+ playerScore.get(currPlayer));
+		score.setFont(new Font("TimesRoman",Font.BOLD,30));
+		Dimension g = score.getPreferredSize();
+		score.setBounds(300,200,g.width,g.height);
+		
+		endPanel.add(winner);
+		endPanel.add(score);
+		
+		end.add(endPanel);
+		end.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		end.setSize(600,600);
+		end.setVisible(true);
 	}
 }
