@@ -710,14 +710,20 @@ public class Game {
 		endPanel.setLayout(null);
 		endPanel.setPreferredSize(boardSize);
 		endPanel.setBounds(0,0,boardSize.width,boardSize.height);
-		
-		int p = Integer.valueOf(currPlayer)+1;
+		int max = -999;
+		int p = -1;
+		for(int i =0;i<numPlayer;i++) {
+			if(playerScore.get(i)>max) {
+				max = playerScore.get(i);
+				p = i;
+			}
+		}
 		JLabel winner = new JLabel("Player"+ p +" won");
 		winner.setFont(new Font("TimesRoman",Font.BOLD,30));
 		Dimension h = winner.getPreferredSize();
 		winner.setBounds(285,100,h.width,h.height);
 		
-		JLabel score = new JLabel("with the score of "+ playerScore.get(currPlayer));
+		JLabel score = new JLabel("with the score of "+ max);
 		score.setFont(new Font("TimesRoman",Font.BOLD,30));
 		Dimension g = score.getPreferredSize();
 		score.setBounds(300,200,g.width,g.height);
